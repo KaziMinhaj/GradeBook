@@ -5,7 +5,12 @@
       "ProjectGuid": "c75f1b1a-0c6b-49d8-89a2-cb5a30f3989c",
       "DisplayName": "GradeBook",
       "ColorIndex": 0
+    },
+    "d69541a4-2316-4232-92a7-8041ca38fcc3": {
+      "ProjectGuid": "d69541a4-2316-4232-92a7-8041ca38fcc3",
+      "DisplayName": "GradeBook.Tests",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
