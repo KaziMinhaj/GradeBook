@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GradeBook
 {
+    public delegate void GraddeAddedDelegate(Object sender, EventArgs args);
     public class Book
     {
         public Book(string name)
@@ -14,17 +15,39 @@ namespace GradeBook
             Name = name;
         }
         private List<double> grades;
-        private string Name;
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                    {
+                    name = value;
+                }
+            }
+        }
+        private string name;
+
         public void AddGrade(double grade)
         {
             if (grade <= 100 && grade >= 0)
             {
                 grades.Add(grade);
+                if (GraddeAdded !=null) {
+                    GraddeAdded(this, new EventArgs());
+                }
+
             }
-            else {
+            else
+            {
                 throw new ArgumentException($"Invalid {nameof(grade)}");
             }
         }
+
+        public event GraddeAddedDelegate GraddeAdded;
         public Statistics GetStatictics()
         {
 
@@ -44,7 +67,7 @@ namespace GradeBook
 
             switch (result.Average)
             {
-                case var d when d>=90.0:
+                case var d when d >= 90.0:
                     result.Letter = 'A';
                     break;
                 case var d when d >= 80.0:
